@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lsc.backhome.mapper.CommentMapper">
+    <resultMap id="commentVO" type="com.lsc.backhome.model.vo.CommentVO">
+        <id column="id" property="id"/>
+        <result column="content" property="content"/>
+        <result column="username" property="username"/>
+        <result column="create_time" property="createTime"/>
+        <result column="stars" property="stars"/>
+    </resultMap>
+
+    <select id="getCommentsBySiteID" resultMap="commentVO">
+        select comment.*,registered_user.username
+        from comment
+        join registered_user on registered_user.id = comment.user_id
+        where comment.site_id = #{siteid}
+        order by create_time desc
+    </select>
+</mapper>
