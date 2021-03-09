@@ -11,4 +11,5 @@ public class CommentVO {
     private String username;
     private Date createTime;
     private Integer stars;
+    private String avatar;
 }

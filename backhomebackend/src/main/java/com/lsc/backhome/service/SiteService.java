@@ -6,6 +6,5 @@ import com.lsc.backhome.model.entity.Site;
 import java.util.List;
 
 public interface SiteService extends IService<Site> {
-    List<Site> getSitesInfo();
-//    Site getSiteInfoBySiteID(int siteID);
+    List<Site> getSitesInfoByRegion(String region);
 }

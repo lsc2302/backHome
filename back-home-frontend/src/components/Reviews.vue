@@ -2,36 +2,28 @@
   <div class="reviews">
     <span class="plot-title">Ratings</span>
     <div id="plot" style="width: 300px;height:100px;"></div>
-    <Comments></Comments>
+    <Comments :comments=comments></Comments>
   </div>
 </template>
 
 <script>
 import Comments from '@/components/Comments'
+import {getCommentsBySiteId} from '@/api/comment'
 
 export default {
   components: { Comments },
   name: 'reviewsChart',
-  data:function(){
-    return {
-      ratingsData:[5, 20, 36, 10, 10]
-      };
-  },
+  data(){
+        return {
+            comments:[]
+        }
+    },
+  props: ['cur-location'],
   components:{
     Comments,
   },
-  computed:{
-    ratingsPercentData:function(){
-      let sum = this.ratingsData.reduce((prev, next, index, array) => prev + next);
-      let res = [];
-      for(let val of this.ratingsData){
-        res.push((val/sum).toFixed(3)*100)
-      }
-      return res;
-    }
-  },
   methods:{
-	  createReviewsChart(){
+	  createReviewsChart(ratingsPercentData){
 		  var reviewsChart = this.$echarts.init(document.getElementById('plot'));
 		  var option = {
 			  yAxis: {
@@ -63,7 +55,7 @@ export default {
 			  series: [{
 				  name: 'ratings',
 				  type: 'bar',
-          data: this.ratingsPercentData,
+          data: ratingsPercentData,
           barWidth:'10',
           label:{
             show: true,
@@ -75,12 +67,31 @@ export default {
         color:"#FFD700"
 		  };
 		  reviewsChart.setOption(option);
-		  }
+      },
+      fetchComments(siteid){
+            getCommentsBySiteId(siteid).then((res)=>{
+                let comments = res.data;
+                this.comments = comments;
+                let stars = [0,0,0,0,0];
+                for(let comment of comments){
+                  stars[comment.stars-1] += 1;
+                }
+                let sum = stars.reduce((prev, next, index, array) => prev + next);
+                let per = [];
+                for(let val of stars){
+                  per.push((val/sum).toFixed(3)*100)
+                }
+                this.createReviewsChart(per);
+            })
+        }
   },
-  mounted() {
-    console.log(this.ratingsPercentData)
-  	this.createReviewsChart();
-  }
+  watch:{
+    curLocation:async function(newCurLocation, oldCurLocation){
+       if(newCurLocation){
+         await this.fetchComments(newCurLocation.id);
+      }
+    }
+  },
 }
 </script>
 

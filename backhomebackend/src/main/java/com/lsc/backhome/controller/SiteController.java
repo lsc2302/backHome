@@ -15,8 +15,8 @@ public class SiteController extends BaseController {
     private SiteService siteService;
 
     @GetMapping("/sites")
-    public ApiResult<List<Site>> getSitesInfo() {
-        List<Site> sites = siteService.getSitesInfo();
+    public ApiResult<List<Site>> getSitesInfoByRegion(@RequestParam(value = "region") String region) {
+        List<Site> sites = siteService.getSitesInfoByRegion(region);
         return ApiResult.success(sites);
     }
 }

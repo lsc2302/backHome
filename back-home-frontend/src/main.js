@@ -13,7 +13,7 @@ Vue.config.productionTip = false
 Vue.use(ElementUI);
 Vue.use(BaiduMap, {
   ak: 'iSuu2ePCQ3KLIcg1Rotf3hcemKscRGGK'
-})
+});
 
 new Vue({
   el: '#app',

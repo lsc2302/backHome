@@ -1,20 +1,23 @@
 import request from '@/utils/request'
 
-export function fetchCommentsByTopicId(topic_Id) {
+export function getCommentsBySiteId(siteid) {
   return request({
-    url: '/comment/get_comments',
+    url: 'http://localhost:8000/comments/get_comments',
     method: 'get',
     params: {
-      topicid: topic_Id
+      siteid: siteid
     }
   })
 }
 
-export function pushComment(data) {
+export function pushComment(data,header) {
   return request({
-    url: '/comment/add_comment',
+    url: 'http://localhost:8000/comments/add_comment',
     method: 'post',
-    data: data
+    data: data,
+    headers: {
+      userName: header
+    }
   })
 }
 

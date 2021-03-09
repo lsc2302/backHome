@@ -1,7 +1,7 @@
 <template>
   <article class="comment">
     <div class="comment-header">
-        <img :src="require('@/userLogos/'+comment.userLogo)" class="userLogo">
+        <img :src="require('@/userLogos/'+comment.avatar)" class="userLogo">
         <div class="comment-title">
             <strong>{{ comment.username }}</strong>
             <span class="comment-time">{{ comment.createTime }}</span>

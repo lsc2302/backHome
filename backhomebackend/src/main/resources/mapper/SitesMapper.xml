@@ -4,13 +4,14 @@
     <resultMap id="commentVO" type="com.lsc.backhome.model.vo.CommentVO">
         <id column="id" property="id"/>
         <result column="content" property="content"/>
+        <result column="avatar" property="avatar"/>
         <result column="username" property="username"/>
         <result column="create_time" property="createTime"/>
         <result column="stars" property="stars"/>
     </resultMap>
 
     <select id="getCommentsBySiteID" resultMap="commentVO">
-        select comment.*,registered_user.username
+        select comment.*,registered_user.username,registered_user.avatar
         from comment
         join registered_user on registered_user.id = comment.user_id
         where comment.site_id = #{siteid}

@@ -26,13 +26,11 @@ public class Comment implements Serializable {
     @TableField(value = "content")
     private String content;
 
-
     @TableField("user_id")
     private String userId;
 
     @TableField("site_id")
     private Integer siteId;
-
 
     @TableField(value = "create_time", fill = FieldFill.INSERT)
     private Date createTime;

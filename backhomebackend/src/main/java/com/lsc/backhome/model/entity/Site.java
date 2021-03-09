@@ -24,6 +24,12 @@ public class Site implements Serializable {
     @TableField(value = "name")
     private String name;
 
+    @TableField(value = "country")
+    private String country;
+
+    @TableField(value = "region")
+    private String region;
+
     @TableField(value = "address")
     private String address;
 
@@ -56,5 +62,11 @@ public class Site implements Serializable {
 
     @TableField(value = "web")
     private String contactWeb;
+
+    @TableField(value = "lat")
+    private Double lat;
+
+    @TableField(value = "lng")
+    private Double lng;
 
 }

@@ -1,8 +1,11 @@
 import request from '@/utils/request'
 
-export function getBillboard() {
+export default function getSites(region) {
   return request({
-    url: '/sites',
-    method: 'get'
+    url: 'http://localhost:8000/sites',
+    method: 'get',
+    params:{
+      region:region
+    }
   })
 }

@@ -33,7 +33,7 @@ public class RegisteredUser implements Serializable {
 
     @Builder.Default
     @TableField("avatar")
-    private String avatar = "https://s3.ax1x.com/2020/12/01/DfHNo4.jpg";
+    private String avatar = "user.jpg";
 
     @JsonIgnore
     @TableField("token")

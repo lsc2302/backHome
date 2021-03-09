@@ -16,6 +16,6 @@ public class siteServiceTest {
 
     @Test
     public void test1() {
-        System.out.println(siteServiceImpl.getSitesInfo());
+        System.out.println(siteServiceImpl.getSitesInfoByRegion("SF"));
     }
 }
