@@ -1,28 +1,29 @@
 <template>
     <div class="container">
-        <div class="intro">
-            <label>Please select the country you are living</label>
-            <el-select v-model="curCountry" class="stars">
-            <el-option label="United States" value='US'></el-option>
-            <el-option label="Canada" value='CA'></el-option>
-        </el-select>
-        </div>
-        <div class="intro">
-            <label>Please select the region you are living</label>
-            <el-select v-model="curRegion" class="stars">
-            <el-option  
-                v-for="region in regionsDict[curCountry]"
-                :key="region"
-                :label="region" 
-                :value="abbr[region]">
-            </el-option>
-        </el-select>
-        </div>
-        <div class="nextWrapper">
-            <img :src="require('@/assets/next.jpeg')" 
-            @click="nextHandler"
-            class="next" />
-            <span class="nextText">Next</span>
+        <div class="wrapper">
+            <div class="intro">
+                <label>Please select the country you are living</label>
+                <el-select v-model="curCountry" class="stars">
+                <el-option label="United States" value='US'></el-option>
+                <el-option label="Canada" value='CA'></el-option>
+            </el-select>
+            </div>
+            <div class="intro">
+                <label>Please select the region you are living</label>
+                <el-select v-model="curRegion" class="stars">
+                <el-option  
+                    v-for="region in regionsDict[curCountry]"
+                    :key="region"
+                    :label="region" 
+                    :value="abbr[region]">
+                </el-option>
+            </el-select>
+            </div>
+            <div class="nextWrapper" @click="nextHandler">
+                <img :src="require('@/assets/next.jpeg')" 
+                class="next" />
+                <span class="nextText">Next</span>
+            </div>
         </div>
     </div>
 </template>
@@ -69,13 +70,13 @@ export default {
     },
     methods:{
         nextHandler(){
-            this.$router.push({ path: '/display' })
+            this.$router.push({ path: '/' })
         }
     }
 }
 </script>
 
-<style>
+<style scoped>
 .container{
     position: relative;
     height:100%;
@@ -85,23 +86,35 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: url('../assets/bg.jpeg') no-repeat;
+    background-size:cover;
 }
+
+.wrapper{
+    background-color: white;
+    width:90vw;
+    border-radius:5%;
+    padding-top:5%;
+    margin-top:-30%;
+}
+
 .intro{
     font-size:15px;
-    margin-bottom:20%;
+    margin-bottom:10%;
 }
 
 .nextWrapper{
-    height:8%;
-    width:100%;
+    height:8vh;
+    width:90%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top:10%;
+    margin-top:-5%;
+    font-size:20px;
 }
 
 .next{
-    height:60%;
+    height:40%;
     margin-right:2%;
 }
 </style>

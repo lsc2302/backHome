@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function userRegister(userDTO) {
   return request({
-    url: '/ums/user/register',
+    url: 'http://localhost:8000/user/register',
     method: 'post',
     data: userDTO
   })
@@ -10,21 +10,24 @@ export function userRegister(userDTO) {
 
 export function login(data) {
   return request({
-    url: '/ums/user/login',
+    url: 'http://localhost:8000/user/login',
     method: 'post',
-    data
+    data:data,
   })
 }
 
-export function getUserInfo() {
+export function getUserInfo(username) {
   return request({
-    url: '/ums/user/info',
-    method: 'get'
+    url: 'http://localhost:8000/user/info',
+    method: 'get',
+    headers: {
+      userName: username
+    }
   })
 }
 
 export function logout() {
   return request({
-    url: '/ums/user/logout'
+    url: 'http://localhost:8000/user/logout'
   })
 }

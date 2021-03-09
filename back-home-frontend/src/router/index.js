@@ -10,7 +10,7 @@ Vue.use(Router);
 export default new Router({
   routes: [
     {
-      path: '/display',
+      path: '/',
       name: 'Display',
       component: Display
     },

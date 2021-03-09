@@ -4,7 +4,7 @@
         <img :src="require('@/userLogos/'+comment.avatar)" class="userLogo">
         <div class="comment-title">
             <strong>{{ comment.username }}</strong>
-            <span class="comment-time">{{ comment.createTime }}</span>
+            <span class="comment-time">{{ new Date(comment.createTime).toDateString() }}</span>
             <br />
         </div>
     </div>
@@ -26,7 +26,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .comment{
     margin-bottom:0.5rem;
     font-size:15px;

@@ -16,8 +16,4 @@ public class RegisterDTO {
     @Length(min = 6, max = 20, message = "length 6-20")
     private String pass;
 
-    @NotEmpty(message = "Please input password again")
-    @Length(min = 6, max = 20, message = "length 6-20")
-    private String checkPass;
-
 }

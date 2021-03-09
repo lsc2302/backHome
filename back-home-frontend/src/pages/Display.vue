@@ -91,7 +91,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .container{
     position: relative;
     height:100%;
@@ -100,12 +100,14 @@ export default {
 }
 
 .home{
+    position: absolute;
     bottom:10%;
     height:90%;
     width:100%;
 }
 
 .profile{
+    position: absolute;
     bottom:10%;
     height:90%;
     width:100%;
@@ -113,7 +115,7 @@ export default {
 
 .showInfoPopup{
     position:absolute; 
-    bottom:10%;
+    bottom:0;
     /* top:30%; */
     left:5%;
     height:80%;
@@ -130,7 +132,7 @@ export default {
 
 .hideInfoPopup{
     position:absolute; 
-    bottom:10%;
+    bottom:0;
     left:5%;
     height:2rem;
     width:90%;
@@ -155,6 +157,8 @@ export default {
 }
 
 .bottom{
+    position:absolute;
+    bottom:0;
     height:10%;
     display: flex;
     flex-direction: row;

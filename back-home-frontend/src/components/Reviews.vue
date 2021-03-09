@@ -79,7 +79,7 @@ export default {
                 let sum = stars.reduce((prev, next, index, array) => prev + next);
                 let per = [];
                 for(let val of stars){
-                  per.push((val/sum).toFixed(3)*100)
+                  per.push((val/sum).toFixed(2)*100)
                 }
                 this.createReviewsChart(per);
             })
@@ -95,7 +95,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .reviews{
   text-align: left;
 }

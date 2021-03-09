@@ -1,6 +1,7 @@
 <template>
-    <div class="submit-form">
-      <el-form @submit.prevent="onSubmit">
+    <div class="container">
+      <div class="toLogin" @click="toLogin" v-show="!user">Please Login to add comment</div>
+      <el-form @submit.prevent="onSubmit" v-show="!!user">
         <div class="header">
         <el-form-item label="Please rate this site" class="stars-intro">
           <el-select v-model="ratings" placeholder="please select your ratings" class="stars">
@@ -29,6 +30,7 @@
 
 <script>
 import { pushComment } from '@/api/comment'
+import { mapGetters } from 'vuex'
 export default {
   name: 'CommentsForm',
   data() {
@@ -38,6 +40,9 @@ export default {
     }
   },
   props: ['cur-location'],
+  computed: {
+        ...mapGetters(['token', 'user'])
+    },
   methods: {
     async onSubmit() {
       try {
@@ -52,7 +57,10 @@ export default {
         
       } finally {
       }
-    }
+    },
+    toLogin(){
+            this.$router.push({ path: '/login' });
+        }
   },
   watch:{
     curLocation:function(newCurLocation, oldCurLocation){
@@ -63,6 +71,11 @@ export default {
 </script>
 
 <style scoped>
+.container{
+  position: relative;
+  height:100%;
+  width:100%;
+}
 .submit-content{
     height:50%;
     width:90%;
@@ -80,5 +93,11 @@ export default {
 }
 .stars{
   width:30%;
+}
+.toLogin{
+    margin-top:50%;
+    color:blue;
+    font-size:20px;
+    width:100%;
 }
 </style>

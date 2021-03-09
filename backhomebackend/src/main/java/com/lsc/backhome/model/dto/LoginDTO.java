@@ -15,5 +15,4 @@ public class LoginDTO {
     @Size(min = 6, max = 20, message = "password length between6-20")
     private String password;
 
-    private Boolean rememberMe;
 }
