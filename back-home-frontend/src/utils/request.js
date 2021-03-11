@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { Message, MessageBox } from 'element-ui'
-// import store from '@/store'
+import store from '@/store'
 import { getToken } from '@/utils/auth'
 
 const service = axios.create({
@@ -11,9 +11,9 @@ const service = axios.create({
 
 service.interceptors.request.use(
   config => {
-    // if (store.getters.token) {
-    //   config.headers['Authorization'] = 'Bearer ' + getToken()
-    // }
+    if (store.getters.token) {
+      config.headers['Authorization'] = 'Bearer ' + getToken()
+    }
     return config
   },
   error => {
